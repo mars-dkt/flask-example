@@ -6,7 +6,7 @@ node {
          app = docker.build("mars-dkt/flask-example")
      }
      stage('Push image') {
-         docker.withRegistry('http://asia-northeast3-docker.pkg.dev/dev-settlement-onepage-project/dev-onepage-kr-ar/quickstart-image', 'credentials-id') {
+         docker.withRegistry('https://asia-northeast3-docker.pkg.dev', 'credentials-id') {
              app.push("${env.BUILD_NUMBER}")
              app.push("latest")
          }
@@ -18,7 +18,7 @@ stage('Build image') {
 }
 
 stage('Push image') {
-  docker.withRegistry('http://asia-northeast3-docker.pkg.dev/dev-settlement-onepage-project/dev-onepage-kr-ar/quickstart-image', 'credentials-id')
+  docker.withRegistry('https://asia-northeast3-docker.pkg.dev/v2', 'credentials-id')
   {
      app.push("${env.BUILD_NUMBER}")
      app.push("latest")
